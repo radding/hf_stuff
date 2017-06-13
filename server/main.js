@@ -1,5 +1,4 @@
 import { Meteor } from 'meteor/meteor';
-
 import { People } from '../lib/collections';
  
 var TWILIO_ACCOUNT_SID = "AC8bbf6f4380d3aafecfba11101dafb562";
@@ -12,9 +11,10 @@ Meteor.startup(() => {
   People.forEach((person) => {
 	  var twoDaysAgo = new Date();
 	  twoDaysAgo.setDate(twoDaysAgo - 2);
-	  if (person.date <=  twoDaysAgo) {
-		  People.update(person._id, { $set: { person._number, Date.now() } });
-		  sendReminder();
+	  if (person._date <= twoDaysAgo) { 
+		People.update(person._id, { $set: { number: person._number }} });
+		People.update(person._id, { $set: { date: new Date() }} });
+		sendReminder();
 	  }
   });
 });
