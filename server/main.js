@@ -27,7 +27,8 @@ Meteor.startup(() => {
 				People.update(peeps._id, {$set: {code: 1234}});
 			}
 			else {
-				People.insert({phone: phoneNumber, code: 1234});			
+				People.insert({phone: phoneNumber, code: 1234});
+				peeps = People.findOne({phone: phoneNumber});		
 			}
 			return peeps._id;
 		},
