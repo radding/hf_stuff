@@ -5,6 +5,7 @@ export default class BaseComponent extends Component {
     constructor(props) {
         super(props);
         this.willMoveOn = this.willMoveOn.bind(this);
+        this.shouldMoveOn = this.shouldMoveOn.bind(this);
     }
 
     willMoveOn(success, failed) {
